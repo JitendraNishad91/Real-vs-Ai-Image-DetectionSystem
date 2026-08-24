@@ -112,27 +112,31 @@ python -m unittest discover -s tests
 
 Both services deploy from this single GitHub repo. `backend/railway.json` and `frontend/railway.json` are pre-configured for [Railway](https://railway.app).
 
+> **Important:** Railway imports `railway.json` settings into the dashboard **once** at service creation. If you ever change the repo config afterwards, also fix **Settings → Deploy → Custom Start Command** in the Railway dashboard — the dashboard value overrides everything.
+
 ### 1. Backend service
 1. Push the repo to GitHub → on [railway.app](https://railway.app) → **New Project → Deploy from GitHub repo**.
-2. In the service settings set **Root Directory** = `backend`.
-   - Build: Nixpacks (`pip install -r requirements.txt`)
-   - Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT` (already in `railway.json`)
-3. Add environment variables (Variables tab):
+2. Service **Settings**:
+   - **Root Directory** = `backend`
+   - **Custom Start Command** = leave **empty** (the Dockerfile `CMD` runs `uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}`)
+   - Remove any **Healthcheck Path** (or set it to `/docs` only after the service starts successfully)
+3. Add environment variables (**Variables** tab):
    - `SECRET_KEY` — any long random string
    - `EMAIL_ADDRESS`, `EMAIL_PASSWORD` — Gmail SMTP for password-reset codes
    - Optional: create **Postgres** in the same project and it auto-links via `DATABASE_URL`; otherwise SQLite is used (resets on redeploy).
-4. Generate a public domain (Settings → Networking) — e.g. `https://<service>.up.railway.app`. API docs live at `/docs`.
+4. Verify in **Logs**: you must see `Uvicorn running on http://0.0.0.0:<port>`.
+5. Generate a public domain (**Settings → Networking → Generate Domain**, target port `8000`). API docs live at `/docs`.
 
 > **Note:** `tensorflow-cpu` is commented out in `requirements.txt`. Uncomment it for real CNN inference — it needs ≥ 1 GB RAM, so use a larger instance size than the default trial container.
 
 ### 2. Frontend service
 1. In the **same Railway project**: **New → GitHub Repo** → select the same repo.
-2. Set **Root Directory** = `frontend`.
-   - Build: `npm install && npm run build`
-   - Start: `npm run preview -- --port $PORT --host 0.0.0.0` (serves `dist/` with SPA routing fallback)
-3. Add environment variable:
-   - `VITE_API_URL` = backend public URL from step 1 (e.g. `https://<service>.up.railway.app`)
-4. Generate a public domain — your app is live.
+2. Service **Settings**:
+   - **Root Directory** = `frontend`
+   - **Custom Start Command** = leave **empty** (`frontend/railway.json` runs `npm run preview -- --port ${PORT:-3000} --host 0.0.0.0`)
+3. Add environment variable (**Variables** tab):
+   - `VITE_API_URL` = backend public URL from step 1 (e.g. `https://<service>.up.railway.app`) — this is a **build-time** variable.
+4. Generate a public domain (target port `3000`) — your app is live.
 
 ### 3. Final wiring
 - Redeploy the frontend after setting `VITE_API_URL` (build-time variable).
