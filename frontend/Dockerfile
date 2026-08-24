@@ -2,11 +2,19 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package.json .
+# VITE_API_URL is baked into the bundle at build time by Vite.
+# Declaring ARG lets Railway inject the service variable during docker build.
+ARG VITE_API_URL=""
+ENV VITE_API_URL=$VITE_API_URL
+
+COPY package.json ./
 RUN npm install
 
 COPY . .
 
-EXPOSE 5173
+# Production build -> dist/
+RUN npm run build
 
-CMD ["npm", "run", "dev"]
+EXPOSE 3000
+
+CMD ["sh", "-c", "vite preview --host 0.0.0.0 --port 3000"]
