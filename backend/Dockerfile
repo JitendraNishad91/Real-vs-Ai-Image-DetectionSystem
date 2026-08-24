@@ -2,6 +2,10 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# Stream logs immediately (no buffering) — critical for cloud debugging
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
 # Install system dependencies for OpenCV & Pillow
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
