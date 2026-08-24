@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { LandingPage } from './pages/LandingPage';
 import { ClassifyPage } from './pages/ClassifyPage';
 import { BatchPage } from './pages/BatchPage';
@@ -12,8 +13,8 @@ import { QueryPage } from './pages/QueryPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { ContactPage } from './pages/ContactPage';
 
-// Setup local api binding address
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Setup local api binding address (strip trailing slashes to prevent //path 404s)
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
 
 // Guard: redirect guests to /auth for protected sections
 const RequireAuth: React.FC<{ token: string | null; children: React.ReactNode }> = ({ token, children }) => {
@@ -61,7 +62,8 @@ const AppContent: React.FC = () => {
       <NavBar token={token} username={username} onLogout={handleLogout} />
       <main className="flex-grow">
         {isAuthReady && (
-          <Routes>
+          <ErrorBoundary>
+            <Routes>
             <Route path="/" element={<LandingPage onStart={() => navigate('/classify')} />} />
             <Route path="/classify" element={<ClassifyPage token={token} apiUrl={API_URL} />} />
             <Route path="/batch" element={<RequireAuth token={token}><BatchPage token={token} apiUrl={API_URL} /></RequireAuth>} />
@@ -78,7 +80,8 @@ const AppContent: React.FC = () => {
             } />
             {/* Fallback: unknown routes go home */}
             <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+            </Routes>
+          </ErrorBoundary>
         )}
       </main>
     </div>
