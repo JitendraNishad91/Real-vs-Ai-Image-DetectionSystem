@@ -38,7 +38,37 @@ def _ensure_user_columns():
             print(f"[MIGRATION] Skipped ({e})")
 
 
+def _ensure_raw_tables():
+    """Create the legacy raw-SQL tables (queries, login_history) if they don't exist yet."""
+    try:
+        with engine.begin() as conn:
+            if engine.dialect.name == "postgresql":
+                conn.execute(text(
+                    'CREATE TABLE IF NOT EXISTS queries ('
+                    'id SERIAL PRIMARY KEY, "user" VARCHAR, subject VARCHAR, '
+                    'message TEXT, created_at TIMESTAMP)'
+                ))
+                conn.execute(text(
+                    'CREATE TABLE IF NOT EXISTS login_history ('
+                    'id SERIAL PRIMARY KEY, "user" VARCHAR, login_time TIMESTAMP, ip VARCHAR)'
+                ))
+            else:
+                conn.execute(text(
+                    'CREATE TABLE IF NOT EXISTS queries ('
+                    'id INTEGER PRIMARY KEY AUTOINCREMENT, "user" TEXT, subject TEXT, '
+                    'message TEXT, created_at TIMESTAMP)'
+                ))
+                conn.execute(text(
+                    'CREATE TABLE IF NOT EXISTS login_history ('
+                    'id INTEGER PRIMARY KEY AUTOINCREMENT, "user" TEXT, login_time TIMESTAMP, ip TEXT)'
+                ))
+        print("[MIGRATION] Raw tables (queries, login_history) verified.")
+    except Exception as e:
+        print(f"[WARNING] Could not ensure raw tables: {e}")
+
+
 _ensure_user_columns()
+_ensure_raw_tables()
 
 
 def _is_valid_email(email: str) -> bool:
