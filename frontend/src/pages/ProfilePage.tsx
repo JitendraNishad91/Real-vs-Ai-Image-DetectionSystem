@@ -38,7 +38,12 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ apiUrl, token }) => {  const 
       const response = await axios.get(`${apiUrl}/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setProfile(response.data);
+      const data = response.data;
+      if (!data || typeof data !== 'object' || !data.username || !data.stats) {
+        setErrorMsg('Server se galat format ka data mila. Thodi der baad try karo.');
+      } else {
+        setProfile(data);
+      }
     } catch (err: any) {
       console.error(err);
       setErrorMsg(err.response?.data?.detail || 'Could not load your profile.');

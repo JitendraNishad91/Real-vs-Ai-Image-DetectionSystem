@@ -37,7 +37,12 @@ export const InsightsPage: React.FC<InsightsPageProps> = ({ apiUrl }) => {
     setErrorMsg(null);
     try {
       const response = await axios.get(`${apiUrl}/model-info`);
-      setModelInfo(response.data);
+      const data = response.data;
+      if (!data || typeof data !== 'object' || !Array.isArray(data.confusion_matrix)) {
+        setErrorMsg('Server se galat format ka data mila. Thodi der baad try karo.');
+      } else {
+        setModelInfo(data);
+      }
     } catch (err: any) {
       console.error(err);
       setErrorMsg('Failed to sync model training metrics from backend server.');
