@@ -57,7 +57,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#ffffff] dark:bg-[#17120d] text-zinc-900 dark:text-zinc-100 transition-colors duration-300 digital-grid">
+    <div className="flex flex-col min-h-screen bg-[#ffffff] dark:bg-[#0c1322] text-zinc-900 dark:text-zinc-100 transition-colors duration-300 digital-grid">
       <NavBar token={token} username={username} onLogout={handleLogout} />
       <main className="flex-grow">
         {isAuthReady && (

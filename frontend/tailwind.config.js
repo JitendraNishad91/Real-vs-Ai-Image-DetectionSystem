@@ -22,8 +22,8 @@ export default {
           950: '#1a2e05',
         },
         dark: {
-          bg: '#0a0a0a',
-          card: 'rgba(20, 20, 20, 0.65)',
+          bg: '#0c1322',
+          card: 'rgba(19, 28, 48, 0.65)',
           border: 'rgba(255, 255, 255, 0.08)'
         }
       },

@@ -185,7 +185,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
         <div className="absolute bottom-0 -right-24 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
       )}
 
-      <div className="p-8 rounded-3xl bg-white dark:bg-[#211a13] border border-zinc-200 dark:border-blue-900/40 shadow-2xl shadow-blue-500/5 transition-colors duration-300">
+      <div className="p-8 rounded-3xl bg-white dark:bg-[#131c30] border border-zinc-200 dark:border-blue-900/40 shadow-2xl shadow-blue-500/5 transition-colors duration-300">
         {/* Brand Header */}
         <div className="flex flex-col items-center mb-8">
           <div className={`h-12 w-12 bg-gradient-to-tr ${isSignup ? 'from-sky-500 to-blue-600' : 'from-blue-500 to-sky-500'} rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 mb-4`}>
@@ -232,7 +232,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
               </div>
             </div>
@@ -255,7 +255,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
                 <button
                   type="button"
@@ -297,7 +297,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Choose a username"
-                className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
+                className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
               />
             </div>
 
@@ -311,7 +311,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
                 />
               </div>
               <span className="text-[10px] text-zinc-400 dark:text-zinc-500">Used for password recovery codes</span>
@@ -327,7 +327,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Minimum 6 characters"
-                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
+                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition"
                 />
                 <button
                   type="button"
@@ -370,7 +370,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
               </div>
             </div>
@@ -413,7 +413,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                 value={resetCode}
                 onChange={(e) => setResetCode(e.target.value.replace(/\D/g, ''))}
                 placeholder="- - - - - -"
-                className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-lg text-center font-mono font-bold tracking-[0.5em] text-blue-600 dark:text-blue-300 placeholder-zinc-300 dark:placeholder-zinc-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-lg text-center font-mono font-bold tracking-[0.5em] text-blue-600 dark:text-blue-300 placeholder-zinc-300 dark:placeholder-zinc-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
               />
               <span className="text-[10px] text-zinc-400 dark:text-zinc-500">
                 Didn&apos;t receive it?{' '}
@@ -433,7 +433,7 @@ export const AuthPages: React.FC<AuthPagesProps> = ({
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="Minimum 6 characters"
-                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#17120d]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full px-4 pr-11 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-[#0c1322]/60 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
                 <button
                   type="button"

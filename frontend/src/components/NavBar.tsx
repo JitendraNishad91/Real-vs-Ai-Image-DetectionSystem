@@ -61,7 +61,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   return (
     <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 backdrop-blur-md ${
       isScrolled
-        ? 'border-blue-500/20 bg-white/80 dark:bg-[#17120d]/80 shadow-[0_4px_30px_rgba(59,130,246,0.06)]'
+        ? 'border-blue-500/20 bg-white/80 dark:bg-[#0c1322]/80 shadow-[0_4px_30px_rgba(59,130,246,0.06)]'
         : 'border-transparent bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,7 +134,7 @@ export const NavBar: React.FC<NavBarProps> = ({
 
                 {/* Dropdown panel */}
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-3 w-72 rounded-2xl bg-white dark:bg-[#262019] border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-black/10 overflow-hidden origin-top-right animate-in fade-in zoom-in-95 duration-150">
+                  <div className="absolute right-0 mt-3 w-72 rounded-2xl bg-white dark:bg-[#1a2540] border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-black/10 overflow-hidden origin-top-right animate-in fade-in zoom-in-95 duration-150">
                     {/* Header: user identity */}
                     <div className="p-4 bg-gradient-to-br from-blue-500/10 via-sky-500/5 to-transparent border-b border-zinc-100 dark:border-zinc-800">
                       <div className="flex items-center gap-3">

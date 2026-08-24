@@ -277,7 +277,7 @@ export const BatchPage: React.FC<BatchPageProps> = ({ token, apiUrl }) => {
       {/* Grad-CAM Heatmap Large Overlaid Modal */}
       {activeGradCam && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="relative max-w-xl w-full bg-white dark:bg-[#17120d] border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-2xl flex flex-col items-center">
+          <div className="relative max-w-xl w-full bg-white dark:bg-[#0c1322] border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-2xl flex flex-col items-center">
             <h3 className="font-bold text-zinc-900 dark:text-white mb-4 text-center">Batch Diagnostic: Grad-CAM Overlay</h3>
             <div className="relative aspect-square w-full rounded-2xl bg-zinc-950 border border-zinc-800 shadow-inner">
               <img

@@ -71,7 +71,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
   });
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden bg-gradient-to-b from-[#f6f1e7] to-white dark:from-[#17120d] dark:to-[#241c14] transition-colors duration-300">
+    <div className="flex flex-col min-h-screen relative overflow-hidden bg-gradient-to-b from-[#eef3fb] to-white dark:from-[#0c1322] dark:to-[#16203a] transition-colors duration-300">
       
       {/* Background radial soft glows behind hero */}
       <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-r from-blue-500/10 to-blue-500/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-glow"></div>

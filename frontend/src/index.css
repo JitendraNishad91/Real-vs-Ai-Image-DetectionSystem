@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --bg-color: #f6f1e7;
+    --bg-color: #eef3fb;
     --card-bg: rgba(255, 255, 255, 0.75);
     --card-border: rgba(0, 0, 0, 0.08);
     --text-primary: #18181b;
@@ -19,7 +19,7 @@
   }
 
   .dark {
-    --bg-color: #17120d;
+    --bg-color: #0c1322;
     --card-bg: rgba(19, 19, 22, 0.65);
     --card-border: rgba(255, 255, 255, 0.08);
     --text-primary: #f1f0f7;
@@ -27,7 +27,7 @@
   }
 
   body {
-    background: linear-gradient(135deg, #f6f1e7 0%, #f6f1e7 100%);
+    background: linear-gradient(135deg, #eef3fb 0%, #eef3fb 100%);
     background-color: var(--bg-color);
     color: var(--text-primary);
     background-attachment: fixed;
@@ -36,7 +36,7 @@
   }
 
   .dark body {
-    background: linear-gradient(135deg, #17120d 0%, #211a13 100%);
+    background: linear-gradient(135deg, #0c1322 0%, #131c30 100%);
   }
 }
 

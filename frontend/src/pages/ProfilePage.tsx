@@ -109,7 +109,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ apiUrl, token }) => {  const 
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#17120d]/60 border border-zinc-100 dark:border-zinc-800">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#0c1322]/60 border border-zinc-100 dark:border-zinc-800">
               <div className="h-9 w-9 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                 <User className="h-4.5 w-4.5 text-blue-500" />
               </div>
@@ -118,7 +118,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ apiUrl, token }) => {  const 
                 <p className="text-sm font-semibold text-zinc-900 dark:text-white truncate">{profile.username}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#17120d]/60 border border-zinc-100 dark:border-zinc-800">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#0c1322]/60 border border-zinc-100 dark:border-zinc-800">
               <div className="h-9 w-9 rounded-xl bg-sky-500/10 flex items-center justify-center flex-shrink-0">
                 <Mail className="h-4.5 w-4.5 text-sky-500" />
               </div>
@@ -127,7 +127,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ apiUrl, token }) => {  const 
                 <p className="text-sm font-semibold text-zinc-900 dark:text-white truncate">{profile.email}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#17120d]/60 border border-zinc-100 dark:border-zinc-800 sm:col-span-2">
+            <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#0c1322]/60 border border-zinc-100 dark:border-zinc-800 sm:col-span-2">
               <div className="h-9 w-9 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                 <CalendarDays className="h-4.5 w-4.5 text-blue-500" />
               </div>

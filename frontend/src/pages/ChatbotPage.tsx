@@ -190,7 +190,7 @@ export const ChatbotPage: React.FC = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="Type a forensic question (e.g. 'What is Grad-CAM?')..."
-            className="flex-grow px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#17120d]/50 text-sm focus:border-blue-500 dark:focus:border-blue-500 outline-none transition duration-200 text-zinc-800 dark:text-white"
+            className="flex-grow px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c1322]/50 text-sm focus:border-blue-500 dark:focus:border-blue-500 outline-none transition duration-200 text-zinc-800 dark:text-white"
           />
           <button
             type="submit"
