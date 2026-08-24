@@ -4,6 +4,10 @@ from sqlalchemy.orm import sessionmaker
 import os
 from .config import settings
 
+# Some hosts (older Heroku-style add-ons) hand out postgres:// — SQLAlchemy needs postgresql://
+if settings.DATABASE_URL.startswith("postgres://"):
+    settings.DATABASE_URL = settings.DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 # Ensure data directory exists for SQLite
 if settings.DATABASE_URL.startswith("sqlite"):
     db_path = settings.DATABASE_URL.replace("sqlite:///", "")

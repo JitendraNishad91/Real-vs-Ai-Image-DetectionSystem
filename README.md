@@ -108,26 +108,32 @@ python -m unittest discover -s tests
 
 ---
 
-## ☁️ Deployment (Vercel + Render)
+## ☁️ Deployment (Railway)
 
-### 1. Backend on Render (free tier works)
-1. Push this repository to GitHub.
-2. On [render.com](https://render.com) → **New → Blueprint** and select your repo (it auto-detects `render.yaml`), or create a **Web Service** manually:
-   - **Root Directory:** `backend`
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-3. Add environment variables from `backend/.env.example` in the Render dashboard (`SECRET_KEY`, `SMTP_EMAIL`, `SMTP_PASSWORD`). Leave `DATABASE_URL` unset to use SQLite, or attach a free Render Postgres instance for persistent data.
-4. Verify the service is live at `https://<your-service>.onrender.com/docs`.
+Both services deploy from this single GitHub repo. `backend/railway.json` and `frontend/railway.json` are pre-configured for [Railway](https://railway.app).
 
-> **Note:** `tensorflow-cpu` is commented out in `requirements.txt`. Uncomment it for real CNN inference — it requires a plan with ≥ 1 GB RAM (the 512 MB free tier will fall back to stub inference).
+### 1. Backend service
+1. Push the repo to GitHub → on [railway.app](https://railway.app) → **New Project → Deploy from GitHub repo**.
+2. In the service settings set **Root Directory** = `backend`.
+   - Build: Nixpacks (`pip install -r requirements.txt`)
+   - Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT` (already in `railway.json`)
+3. Add environment variables (Variables tab):
+   - `SECRET_KEY` — any long random string
+   - `EMAIL_ADDRESS`, `EMAIL_PASSWORD` — Gmail SMTP for password-reset codes
+   - Optional: create **Postgres** in the same project and it auto-links via `DATABASE_URL`; otherwise SQLite is used (resets on redeploy).
+4. Generate a public domain (Settings → Networking) — e.g. `https://<service>.up.railway.app`. API docs live at `/docs`.
 
-### 2. Frontend on Vercel
-1. On [vercel.com](https://vercel.com) → **Add New → Project** and import the same repo.
-2. Set **Root Directory** to `frontend` (Vite is auto-detected; build = `npm run build`, output = `dist`).
+> **Note:** `tensorflow-cpu` is commented out in `requirements.txt`. Uncomment it for real CNN inference — it needs ≥ 1 GB RAM, so use a larger instance size than the default trial container.
+
+### 2. Frontend service
+1. In the **same Railway project**: **New → GitHub Repo** → select the same repo.
+2. Set **Root Directory** = `frontend`.
+   - Build: `npm install && npm run build`
+   - Start: `npm run preview -- --port $PORT --host 0.0.0.0` (serves `dist/` with SPA routing fallback)
 3. Add environment variable:
-   - `VITE_API_URL` = `https://<your-service>.onrender.com`
-4. Deploy. SPA routing on refresh is already handled by `frontend/vercel.json`.
+   - `VITE_API_URL` = backend public URL from step 1 (e.g. `https://<service>.up.railway.app`)
+4. Generate a public domain — your app is live.
 
 ### 3. Final wiring
-- Update CORS in `backend/app/main.py` if you want to restrict `allow_origins` to your Vercel domain.
-- Register/login against the deployed backend and run a scan end-to-end.
+- Redeploy the frontend after setting `VITE_API_URL` (build-time variable).
+- Register/login against the deployed stack and run a scan end-to-end.
