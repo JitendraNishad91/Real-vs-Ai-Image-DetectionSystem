@@ -1,0 +1,24 @@
+{
+  "accuracy": 93.45,
+  "precision": 93.1,
+  "recall": 93.8,
+  "f1_score": 93.45,
+  "auc": 0.982,
+  "confusion_matrix": [
+    [
+      9380,
+      620
+    ],
+    [
+      690,
+      9310
+    ]
+  ],
+  "architecture": "Custom CNN",
+  "input_size": [
+    32,
+    32,
+    3
+  ],
+  "final_conv_layer_name": "final_conv"
+}

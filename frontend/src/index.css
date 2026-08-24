@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-color: #f6f1e7;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-primary: #18181b;
+    --text-secondary: #71717a;
+    --accent-color: #3b82f6;
+    --accent-glow: rgba(229, 9, 20, 0.15);
+
+    /* Authentic state glow (cyan) */
+    --verified-glow: 0 0 20px rgba(229, 9, 20, 0.4);
+    /* AI detected warning glow (red) */
+    --fake-glow: 0 0 20px rgba(239, 68, 68, 0.4);
+  }
+
+  .dark {
+    --bg-color: #17120d;
+    --card-bg: rgba(19, 19, 22, 0.65);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f1f0f7;
+    --text-secondary: #a3a1bc;
+  }
+
+  body {
+    background: linear-gradient(135deg, #f6f1e7 0%, #f6f1e7 100%);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    background: linear-gradient(135deg, #17120d 0%, #211a13 100%);
+  }
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(229, 9, 20, 0.25);
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.08);
+}
+
+/* Radar Scanner Grid Background */
+.digital-grid {
+  position: relative;
+}
+
+.digital-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(229, 9, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(229, 9, 20, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Sweeping Radar Scanner Overlay */
+@keyframes radar-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.digital-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(229, 9, 20, 0.015) 0%, rgba(229, 9, 20, 0) 100%);
+  pointer-events: none;
+  z-index: -1;
+  animation: radar-sweep 8s linear infinite;
+}
+
+/* Shifting text gradient keyframes */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Subtle Text Glow */
+.text-glow {
+  text-shadow: 0 0 15px rgba(229, 9, 20, 0.35);
+}
+
+/* Glassmorphism Buttons & CTAs */
+.btn-glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.btn-glass:hover {
+  transform: scale(1.03);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
+}
+
+/* Shimmer Sweep Animation */
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  50%, 100% {
+    left: 150%;
+  }
+}
+
+.btn-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.13), transparent);
+  animation: shimmer 5s infinite linear;
+}
+
+/* Badge Glow */
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.1);
+    border-color: rgba(229, 9, 20, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.25);
+    border-color: rgba(229, 9, 20, 0.4);
+  }
+}
+
+.badge-glow {
+  animation: badge-pulse 3s infinite ease-in-out;
+}
+
+/* Horizontal scanning beam */
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.animate-scan-beam {
+  animation: scan 3s linear infinite;
+}
+
+/* Dynamic scanning loading bar keyframes */
+@keyframes scan-bar {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.loading-scan-bar {
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 50%, #3b82f6 100%);
+  background-size: 200% 100%;
+  animation: scan-bar 1.5s infinite linear;
+}
+
+/* Verified vs Fake Glowing Status Indicators */
+.status-verified {
+  box-shadow: var(--verified-glow);
+  border-color: rgba(229, 9, 20, 0.5) !important;
+}
+
+.status-fake {
+  box-shadow: var(--fake-glow);
+  border-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 9, 20, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 9, 20, 0.6);
+}
+
+/* Custom Mix Blend Modes for Grad-CAM */
+.mix-blend-jet {
+  mix-blend-mode: multiply;
+}
+.dark .mix-blend-jet {
+  mix-blend-mode: screen;
+}
